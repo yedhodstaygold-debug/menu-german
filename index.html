@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAS BERLIN - Menu Board</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #e8e4df;
+            --dark-col: #1c1815;
+            --light-col: #ffffff;
+            --accent-gold: #c5a059;
+            --text-dark: #2b2b2b;
+            --text-light: #f5f5f5;
+            --text-muted: #888888;
+            --font-title: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* เมนูกระดานใหญ่แบบ Grid 3 คอลัมน์ */
+        .menu-board-container {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 320px 1fr 1fr;
+            gap: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        /* ---------------- LEFT COLUMN (DARK) ---------------- */
+        .col-left {
+            background-color: var(--dark-col);
+            color: var(--text-light);
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .brand-header {
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 15px;
+        }
+
+        .brand-title {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+        }
+
+        .brand-sub {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Block: Operating Hours */
+        .hours-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--accent-gold);
+            padding: 15px;
+        }
+
+        .hours-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .hours-card p {
+            font-size: 0.8rem;
+            color: #d1d1d1;
+            line-height: 1.5;
+        }
+
+        /* Main Course List inside Dark Col */
+        .dark-menu-group h3 {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            border-bottom: 1px solid var(--accent-gold);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .dark-menu-item {
+            margin-bottom: 15px;
+        }
+
+        .dark-menu-head {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .dark-menu-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        /* Vertical Image Stack in Left Column */
+        .food-img-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .food-img-stack img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ---------------- MIDDLE COLUMN (LIGHT) ---------------- */
+        .col-middle {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .drink-banner {
+            position: relative;
+            height: 220px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .drink-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .drink-banner-text {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            color: var(--accent-gold);
+            padding: 8px 15px;
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .light-card {
+            background-color: var(--light-col);
+            padding: 25px 20px;
+            border-radius: 4px;
+        }
+
+        .light-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            text-align: center;
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--text-dark);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+        /* ---------------- RIGHT COLUMN (LIGHT) ---------------- */
+        .col-right {
+            background-color: var(--light-col);
+            padding: 25px 20px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Item Rows for Light Cards */
+        .menu-row-item {
+            margin-bottom: 12px;
+        }
+
+        .menu-row-head {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .menu-row-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .sub-cat-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0 10px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 3px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .menu-board-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-board-container">
+        
+        <!-- ================= คอลัมน์ซ้าย (สีเข้ม) ================= -->
+        <div class="col-left">
+            <div class="brand-header">
+                <h1 class="brand-title">DAS BERLIN</h1>
+                <p class="brand-sub">German Kitchen & Bar</p>
+            </div>
+
+            <!-- ส่วนกำหนดการ OPERATING HOURS -->
+            <div class="hours-card">
+                <h3>OPERATING HOURS</h3>
+                <p><strong>Mon - Thu:</strong> 11:30 - 22:30</p>
+                <p><strong>Fri - Sun:</strong> 11:30 - 23:30</p>
+                <p style="margin-top: 8px; font-size: 0.75rem; color: var(--accent-gold);">* Happy Hour Everyday 17:00 - 19:00</p>
+            </div>
+
+            <!-- หมวด Main Course -->
+            <div class="dark-menu-group">
+                <h3>MAIN COURSE</h3>
+                
+                <div class="dark-menu-item">
+                    <div class="dark-menu-head">
+                        <span>Schweinshaxe</span>
+                        <span>฿650</span>
+                    </div>
+                    <p class="dark-menu-desc">ขาหมูเยอรมันอบกรอบ เสิร์ฟพร้อม Sauerkraut และมันฝรั่งบด</p>
+                </div>
+
+                <div class="dark-menu-item">
+                    <div class="dark-menu-head">
+                        <span>Currywurst Berlin</span>
+                        <span>฿240</span>
+                    </div>
+                    <p class="dark-menu-desc">ไส้กรอกเยอรมันราดซอสมะเขือเทศผงกะหรี่ พร้อมเฟรนช์ฟรายส์</p>
+                </div>
+
+                <div class="dark-menu-item">
+                    <div class="dark-menu-head">
+                        <span>Wiener Schnitzel</span>
+                        <span>฿390</span>
+                    </div>
+                    <p class="dark-menu-desc">หมูชุบเกล็ดขนมปังทอดกรอบ เสิร์ฟพร้อมสลัดมันฝรั่ง</p>
+                </div>
+
+                <div class="dark-menu-item">
+                    <div class="dark-menu-head">
+                        <span>Sausage Platter</span>
+                        <span>฿520</span>
+                    </div>
+                    <p class="dark-menu-desc">รวมไส้กรอกเยอรมัน 4 ชนิด พร้อมมัสตาร์ดบาวาเรีย</p>
+                </div>
+
+                <div class="dark-menu-item">
+                    <div class="dark-menu-head">
+                        <span>Käsespätzle</span>
+                        <span>฿290</span>
+                    </div>
+                    <p class="dark-menu-desc">พาสต้าเส้นสดผัดชีสสวิส โรยหน้าด้วยหอมเจียวกรอบ</p>
+                </div>
+            </div>
+
+            <!-- รูปภาพอาหารฝั่งซ้าย (3 รูปเรียงลงมา) -->
+            <div class="food-img-stack">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="Schweinshaxe">
+                <img src="https://images.unsplash.com/photo-1599921841143-819065a55cc6?auto=format&fit=crop&w=500&q=80" alt="Currywurst">
+                <img src="https://images.unsplash.com/photo-1535920527002-b35e96722eb9?auto=format&fit=crop&w=500&q=80" alt="Sausage Platter">
+            </div>
+        </div>
+
+        <!-- ================= คอลัมน์กลาง (สีสว่าง) ================= -->
+        <div class="col-middle">
+            <!-- ภาพ Banner เครื่องดื่มด่านบน -->
+            <div class="drink-banner">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" alt="German Craft Drinks">
+                <div class="drink-banner-text">BERLIN DRINKS</div>
+            </div>
+
+            <!-- บล็อก APPETIZERS -->
+            <div class="light-card">
+                <h3>APPETIZERS</h3>
+                
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Laugenbrezel</span>
+                        <span>฿120</span>
+                    </div>
+                    <p class="menu-row-desc">เพรตเซลอบสดใหม่สไตล์บาวาเรีย เสิร์ฟพร้อมเนยสด</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Kartoffelsuppe</span>
+                        <span>฿180</span>
+                    </div>
+                    <p class="menu-row-desc">ซุปมันฝรั่งบดเนียนนุ่ม ท็อปด้วยไส้กรอกไวน์เนอร์</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Kartoffelpuffer</span>
+                        <span>฿160</span>
+                    </div>
+                    <p class="menu-row-desc">แพนเค้กมันฝรั่งทอดกรอบ คู่กับซอสแอปเปิ้ลโฮมเมด</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Obatzda mit Brot</span>
+                        <span>฿210</span>
+                    </div>
+                    <p class="menu-row-desc">ชีสดิปบาวาเรียทำจากคาเมมแบร์ เสิร์ฟพร้อมขนมปังไรย์</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>German Potato Salad</span>
+                        <span>฿150</span>
+                    </div>
+                    <p class="menu-row-desc">สลัดมันฝรั่งผสมเบคอนกรอบและน้ำสลัดไวน์การ์</p>
+                </div>
+            </div>
+
+            <!-- บล็อก DESSERTS -->
+            <div class="light-card">
+                <h3>DESSERTS</h3>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Black Forest Cake</span>
+                        <span>฿180</span>
+                    </div>
+                    <p class="menu-row-desc">เค้กช็อกโกแลตสลับชั้นครีมสดและเชอร์รี่เชื่อม</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Apfelstrudel</span>
+                        <span>฿190</span>
+                    </div>
+                    <p class="menu-row-desc">พายแอปเปิ้ลสตรูเดิล อบเชย เสิร์ฟพร้อมไอศกรีมวานิลลา</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Bienenstich</span>
+                        <span>฿160</span>
+                    </div>
+                    <p class="menu-row-desc">เค้กพายย่างไส้คัสตาร์ด ท็อปอัลมอนด์คาราเมลน้ำผึ้ง</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Berliner Doughnut</span>
+                        <span>฿90</span>
+                    </div>
+                    <p class="menu-row-desc">โดนัทเนื้อนุ่มยัดไส้แยมราสเบอร์รี่ โรยน้ำตาลไอซิ่ง</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Käsekuchen</span>
+                        <span>฿170</span>
+                    </div>
+                    <p class="menu-row-desc">ชีสเค้กสไตล์เยอรมันทำจาก Quark ชีส เบานุ่มละมุน</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= คอลัมน์ขวา (สีสว่าง) ================= -->
+        <div class="col-right">
+            <div class="light-card" style="padding:0;">
+                <h3>DRINK LIST</h3>
+
+                <!-- BEER -->
+                <div class="sub-cat-title">GERMAN BEER</div>
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Weissbier (500ml)</span>
+                        <span>฿280</span>
+                    </div>
+                    <p class="menu-row-desc">เบียร์วีตบาวาเรีย รสนุ่มหอมกลิ่นกล้วยและกานพลู</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>German Pilsner</span>
+                        <span>฿250</span>
+                    </div>
+                    <p class="menu-row-desc">เบียร์ลาเกอร์สีทอง สดชื่น ขมปลายลิ้นกำลังดี</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Dunkel Dark Beer</span>
+                        <span>฿270</span>
+                    </div>
+                    <p class="menu-row-desc">เบียร์ดำสไตล์เยอรมัน หอมกลิ่นมอลต์คั่วและช็อกโกแลต</p>
+                </div>
+
+                <!-- REFRESHMENT -->
+                <div class="sub-cat-title">SOFT DRINKS</div>
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Spezi</span>
+                        <span>฿90</span>
+                    </div>
+                    <p class="menu-row-desc">ส่วนผสมยอดนิยมระหว่างโคล่าและน้ำส้มโซดา</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Apfelschorle</span>
+                        <span>฿95</span>
+                    </div>
+                    <p class="menu-row-desc">น้ำแอปเปิ้ลสกัดผสมน้ำแร่มีก๊าซ สดชื่นดับกระหาย</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Sparkling Mineral Water</span>
+                        <span>฿70</span>
+                    </div>
+                    <p class="menu-row-desc">น้ำแร่ธรรมชาติมีก๊าซนำเข้าจากเยอรมนี</p>
+                </div>
+
+                <!-- WINE -->
+                <div class="sub-cat-title">WINE & COFFEE</div>
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>German Riesling (Glass)</span>
+                        <span>฿320</span>
+                    </div>
+                    <p class="menu-row-desc">ไวน์ขาวอมหวานเปรี้ยวสดชื่นจากลุ่มแม่น้ำโมเซล</p>
+                </div>
+
+                <div class="menu-row-item">
+                    <div class="menu-row-head">
+                        <span>Fresh Espresso</span>
+                        <span>฿80</span>
+                    </div>
+                    <p class="menu-row-desc">กาแฟเอสเพรสโซเข้มข้น</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
