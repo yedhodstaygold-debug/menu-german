@@ -122,7 +122,7 @@
             margin-top: 3px;
         }
 
-        /* Vertical Image Stack in Left Column */
+        /* Vertical Image Stack */
         .food-img-stack {
             display: flex;
             flex-direction: column;
@@ -194,7 +194,8 @@
             border-radius: 4px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         /* Item Rows for Light Cards */
@@ -224,6 +225,21 @@
             margin: 15px 0 10px;
             border-bottom: 1px dashed #ddd;
             padding-bottom: 3px;
+        }
+
+        /* Image Stack inside Right Column */
+        .right-img-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .right-img-stack img {
+            width: 100%;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 4px;
         }
 
         /* Responsive Breakpoints */
@@ -407,8 +423,8 @@
 
         <!-- ================= RIGHT COLUMN (LIGHT) ================= -->
         <div class="col-right">
-            <div class="light-card" style="padding:0;">
-                <h3>DRINK LIST</h3>
+            <div>
+                <h3 style="font-family: var(--font-title); font-size: 1.3rem; text-align: center; color: var(--text-dark); border-bottom: 2px solid var(--text-dark); padding-bottom: 5px; margin-bottom: 20px; letter-spacing: 1.5px;">DRINK LIST</h3>
 
                 <!-- BEER -->
                 <div class="sub-cat-title">GERMAN BEER</div>
@@ -479,6 +495,12 @@
                     </div>
                     <p class="menu-row-desc">Rich and bold single shot espresso.</p>
                 </div>
+            </div>
+
+            <!-- Right Column Image Stack (2 images at bottom) -->
+            <div class="right-img-stack">
+                <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=500&q=80" alt="German Beer Glass">
+                <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=500&q=80" alt="White Wine Riesling">
             </div>
         </div>
 
